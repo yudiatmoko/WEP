@@ -8,16 +8,8 @@ class Cover extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Theme.of(context).primaryColor,
-      body: LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints){
-          if (constraints.maxWidth > 600){
-            return CoverWeb();
-          } else{
-            return CoverMobile();
-          }
-        }
-      ),
-    );
+      body: CoverMobile()
+    ); 
   }
 }
 
@@ -115,8 +107,8 @@ class CoverMobile extends StatelessWidget {
                           color: Colors.white,
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.black45,
-                              offset: Offset(0,1),
+                              color: Colors.black54,
+                              offset: Offset(0,2),
                               blurRadius: 5,
                             )
                           ]
@@ -142,13 +134,20 @@ class CoverMobile extends StatelessWidget {
                                     builder: (BuildContext context) => Home(),
                                   ),
                                 ),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(30),
-                                  child: Container(
-                                    padding: EdgeInsets.all(6),
+                                child: Container(
+                                  decoration: BoxDecoration(
                                     color: Theme.of(context).primaryColor,
-                                    child: Text('Cek Menu', style: TextStyle(fontFamily: 'Noto',color: Colors.white),)
+                                    borderRadius: BorderRadius.circular(30),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black54,
+                                        offset: Offset(0,2),
+                                        blurRadius: 5,
+                                      )
+                                    ],
                                   ),
+                                  padding: EdgeInsets.all(6),
+                                  child: Text('Cek Menu', style: TextStyle(fontFamily: 'Noto',color: Colors.white),)
                                 ),
                               )
                             ],
@@ -163,16 +162,6 @@ class CoverMobile extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-}
-
-class CoverWeb extends StatelessWidget {
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      
     );
   }
 }

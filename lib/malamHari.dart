@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:project/detail.dart';
-import 'package:project/detail1.dart';
 import 'data.dart';
 
 class MalamHari extends StatefulWidget {

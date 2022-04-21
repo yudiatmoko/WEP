@@ -35,7 +35,7 @@ class _DetailState extends State<Detail> {
         child : Column(
           children: [
             Expanded(
-              flex: 2,
+              flex: 1,
               child: Stack(
                 children: [
                   Container(
@@ -80,7 +80,7 @@ class _DetailState extends State<Detail> {
                             color: Colors.black26
                           ),
                           padding: EdgeInsets.all(8),
-                          child: Icon(Icons.star_rounded, size: 30, color: Colors.white,)
+                          child: Icon(Icons.rate_review_rounded, size: 30, color: Colors.white,)
                           ),
                       ),
                     ),
@@ -88,8 +88,7 @@ class _DetailState extends State<Detail> {
                 ],
               ),
             ),
-            Expanded(
-              flex: 3,
+            SingleChildScrollView(
               child: Container(
                 padding: EdgeInsets.only(top: 15, bottom: 35, left: 25, right: 25),
                 decoration: BoxDecoration(
@@ -105,64 +104,57 @@ class _DetailState extends State<Detail> {
                   )
                 ),
                 child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Flexible(
-                      flex: 1,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 5),
                       child: Text(
-                        widget.nama, style: TextStyle(fontSize: 26, color: Colors.black54, fontWeight: FontWeight.bold),
+                        widget.nama, style: TextStyle(fontSize: 30, color: Colors.black54, fontWeight: FontWeight.bold),
                         textAlign: TextAlign.center,
-                      )
+                      ),
                     ),
-                    Flexible(
-                      flex: 2,
+                    Container(
+                      margin: const EdgeInsets.symmetric(vertical: 10),
+                      height: 65,
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          Flexible(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Expanded(child: Text('Rp',style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Theme.of(context).primaryColor),)),
-                                Flexible(child: Text(widget.harga, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Colors.black54),))
-                              ],
-                            ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text('Rp',style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Theme.of(context).primaryColor),),
+                              Text(widget.harga, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Colors.black54),)
+                            ],
                           ),
-                          Flexible(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Expanded(child: Icon(Icons.timer_sharp, size: 34, color: Theme.of(context).primaryColor,)),
-                                Flexible(child: Text(widget.waktu, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Colors.black54),))
-                              ],
-                            ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              SizedBox(height: 2),
+                              Row(
+                                children: [
+                                Icon(Icons.star_rounded, size: 24, color: Theme.of(context).primaryColor,),
+                                Icon(Icons.star_rounded, size: 24, color: Theme.of(context).primaryColor,),
+                                Icon(Icons.star_rounded, size: 24, color: Theme.of(context).primaryColor,),
+                                Icon(Icons.star_rounded, size: 24, color: Theme.of(context).primaryColor,),
+                                Icon(Icons.star_half_rounded, size: 24, color: Theme.of(context).primaryColor,),
+                                ],
+                              ),
+                              Text('145 ulasan', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Colors.black54),)
+                            ],
                           ),
-                          Flexible(
-                            child: Column(
-                              children: [
-                                Expanded(
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                    Flexible(child: Icon(Icons.star_rounded, size: 30, color: Theme.of(context).primaryColor,)),
-                                    Flexible(child: Icon(Icons.star_rounded, size: 30, color: Theme.of(context).primaryColor,)),
-                                    Flexible(child: Icon(Icons.star_rounded, size: 30, color: Theme.of(context).primaryColor,)),
-                                    Flexible(child: Icon(Icons.star_rounded, size: 30, color: Theme.of(context).primaryColor,)),
-                                    Flexible(child: Icon(Icons.star_half_rounded, size: 30, color: Theme.of(context).primaryColor,)),
-                                    ],
-                                  ),
-                                ),
-                                Flexible(child: Text('145 ulasan', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Colors.black54),))
-                              ],
-                            )
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              SizedBox(height: 2),
+                              Icon(Icons.timer_sharp, size: 36, color: Theme.of(context).primaryColor,),
+                              Text(widget.waktu, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Colors.black54),)
+                            ],
                           ),
                         ],
-                      )
+                      ),
                     ),
-                    Expanded(
-                      flex: 4,
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10, bottom: 70),
                       child: Text(
                         widget.deskripsi,
                         textAlign: TextAlign.justify,
@@ -171,77 +163,69 @@ class _DetailState extends State<Detail> {
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
                         ),
-                      )
+                      ),
                     ),
-                    Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Flexible(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Expanded(
-                                  flex: 0,
-                                  child: Container(
-                                    padding: EdgeInsets.all(5),
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                      boxShadow: [BoxShadow(
-                                        color: Colors.black54,
-                                        blurRadius: 5,
-                                        offset: Offset(1,0),
-                                      )],
-                                      shape: BoxShape.circle,
-                                      color: Colors.white,
-                                    ),
-                                    child: FavButton(),
-                                  )
-                                ),
-                                Flexible(child: SizedBox()),
-                                Expanded(
-                                  flex: 6,
-                                  child: InkWell(
-                                    onTap: (){
-                                      _launchURL('https://gofood.link/a/C2XABtE');
-                                    },
-                                    child: Container(
-                                      height: 60,
-                                      padding: EdgeInsets.all(5),
-                                      decoration: BoxDecoration(
-                                        boxShadow: [BoxShadow(
-                                          color: Colors.black54,
-                                          blurRadius: 5,
-                                          offset: Offset(1,0),
-                                        )],
-                                        color: Theme.of(context).primaryColor,
-                                        borderRadius: BorderRadius.circular(30)
-                                      ),
-                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                        children: [
-                                          Flexible(
-                                            flex: 0,
-                                            child: Icon(Icons.shopping_cart_outlined, size: 30, color: Colors.white)),
-                                          Flexible(child: Text('Pesan di GoFood', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white)))
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      )
-                    )
                   ]
                 ),
               ),
             )
           ],
-        )
+        ),
       ),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(left: 30),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            InkWell(
+              borderRadius: BorderRadius.circular(30),
+              onTap: (){
+                launch('https://gofood.link/a/C2XABtE');
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black54,
+                      offset: Offset(0,2),
+                      blurRadius: 5,
+                    )
+                  ],
+                  color: Theme.of(context).primaryColor,
+                ),
+                width: 220,
+                height: 60,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Icon(Icons.shopping_cart_outlined, size: 30, color: Colors.white),
+                    Text('Pesan di GoFood', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white)),
+                  ],
+                )
+              ),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black54,
+                    offset: Offset(0,2),
+                    blurRadius: 5,
+                  )
+                ],
+              ),
+              child: CircleAvatar(
+                radius: 30,
+                backgroundColor: Colors.white,
+                child: FavButton()
+              ),
+            ),
+          ],
+        ),
+      )
     );
   }
   void _launchURL(String _url) async {
@@ -335,6 +319,7 @@ class _RatingState extends State<Rating> {
   late String email;
   late String ulasan;
   var rating = 0;
+  Widget _space = SizedBox(height: 10);
 
   @override
   Widget build(BuildContext context) {
@@ -350,147 +335,136 @@ class _RatingState extends State<Rating> {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Expanded(
-                      flex: 2,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Flexible(
-                            flex: 0,
-                            child: Text('Data Diri', style: TextStyle(color: Colors.black54, fontSize: 18, fontWeight: FontWeight.bold))),
-                          TextField(
-                            cursorColor: Theme.of(context).primaryColor,
-                            decoration: InputDecoration(
-                              hintText: 'Ketikkan nama anda',
-                              labelText: 'Nama',
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(30),
-                                borderSide: BorderSide(color: Theme.of(context).primaryColor)
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(30),
-                                borderSide: BorderSide(color: Theme.of(context).primaryColor)
-                              ),
-                              floatingLabelStyle: TextStyle(color: Theme.of(context).primaryColor),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text('Data Diri', style: TextStyle(color: Colors.black54, fontSize: 18, fontWeight: FontWeight.bold)),
+                        _space,
+                        TextField(
+                          cursorColor: Theme.of(context).primaryColor,
+                          decoration: InputDecoration(
+                            hintText: 'Ketikkan nama anda',
+                            labelText: 'Nama',
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30),
+                              borderSide: BorderSide(color: Theme.of(context).primaryColor)
                             ),
-                            onChanged: (String value){
-                              nama = value;
-                            },
-                          ),
-                          TextField(
-                            cursorColor: Theme.of(context).primaryColor,
-                            decoration: InputDecoration(
-                              hintText: 'Ketikkan email anda',
-                              labelText: 'Email',
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(30),
-                                borderSide: BorderSide(color: Theme.of(context).primaryColor)
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(30),
-                                borderSide: BorderSide(color: Theme.of(context).primaryColor)
-                              ),
-                              floatingLabelStyle: TextStyle(color: Theme.of(context).primaryColor),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30),
+                              borderSide: BorderSide(color: Theme.of(context).primaryColor)
                             ),
-                            onChanged: (String value){
-                              email = value;
-                            },
+                            floatingLabelStyle: TextStyle(color: Theme.of(context).primaryColor),
                           ),
-                        ],
-                      ),
+                          onChanged: (String value){
+                            nama = value;
+                          },
+                        ),
+                        _space,
+                        TextField(
+                          cursorColor: Theme.of(context).primaryColor,
+                          decoration: InputDecoration(
+                            hintText: 'Ketikkan email anda',
+                            labelText: 'Email',
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30),
+                              borderSide: BorderSide(color: Theme.of(context).primaryColor)
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30),
+                              borderSide: BorderSide(color: Theme.of(context).primaryColor)
+                            ),
+                            floatingLabelStyle: TextStyle(color: Theme.of(context).primaryColor),
+                          ),
+                          onChanged: (String value){
+                            email = value;
+                          },
+                        ),
+                      ],
                     ),
-                    Expanded(
-                      flex: 2,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,                        
-                        children: [
-                          Text('Ulasan',style: TextStyle(color: Colors.black54, fontSize: 18, fontWeight: FontWeight.bold)),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: 
-                              List.generate(
-                                5, (index) => IconButton(
-                                  splashRadius: 1,
-                                  icon: index < rating ? 
-                                  Icon(
-                                    Icons.star_rounded, 
-                                    size: 40,
-                                    color: Theme.of(context).primaryColor,
-                                  )
-                                  : 
-                                  Icon(
-                                    Icons.star_outline_rounded,
-                                    size: 40,
-                                    color: Colors.black54,
-                                  ),
-                                  onPressed: (){
-                                    setState(() {
-                                      rating = index + 1;
-                                  });
-                                },
-                              ),
-                            )
-                          ),
-                          TextField(
-                            cursorColor: Theme.of(context).primaryColor,
-                            decoration: InputDecoration(
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(30),
-                                borderSide: BorderSide(color: Theme.of(context).primaryColor),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(30),
-                                borderSide: BorderSide(color: Theme.of(context).primaryColor)
-                              ),
-                              floatingLabelStyle: TextStyle(color: Theme.of(context).primaryColor),
-                              hintText: 'Beri ulasan',
-                              labelText: 'Ulasan',
-                            ),
-                            onChanged: (String value){
-                              ulasan = value;
-                            },
-                          ),
-                        ],
-                      ),
-                    ),
-                    Flexible(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Flexible(
-                            child: MaterialButton(
-                              textColor: Colors.white,
-                              color: Theme.of(context).primaryColor,
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-                              onPressed: () {
-                                Navigator.pop(context);
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    elevation: 10,
-                                    backgroundColor: Theme.of(context).primaryColor,
-                                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                                    duration: Duration(seconds: 1),
-                                    content: Text('Terima Kasih telah memberi ulasan',style: TextStyle(
-                                      fontFamily: 'Noto',
-                                      color: Colors.white
-                                    ),
-                                    ),
-                                  )
-                                );
-                              },
-                              child: Text('Kirim', style: TextStyle(fontSize: 14)),
-                            ),
-                          ),
-                           Flexible(
-                             child: MaterialButton(
-                              child: Text('Lewati', style: TextStyle(color: Colors.black54)),
-                              onPressed: (){
-                                Navigator.pop(context);
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,                        
+                      children: [
+                        Text('Ulasan',style: TextStyle(color: Colors.black54, fontSize: 18, fontWeight: FontWeight.bold)),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: 
+                            List.generate(
+                              5, (index) => IconButton(
+                                splashRadius: 1,
+                                icon: index < rating ? 
+                                Icon(
+                                  Icons.star_rounded, 
+                                  size: 40,
+                                  color: Theme.of(context).primaryColor,
+                                )
+                                : 
+                                Icon(
+                                  Icons.star_outline_rounded,
+                                  size: 40,
+                                  color: Colors.black54,
+                                ),
+                                onPressed: (){
+                                  setState(() {
+                                    rating = index + 1;
+                                });
                               },
                             ),
+                          )
+                        ),
+                        _space,
+                        TextField(
+                          cursorColor: Theme.of(context).primaryColor,
+                          decoration: InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30),
+                              borderSide: BorderSide(color: Theme.of(context).primaryColor),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30),
+                              borderSide: BorderSide(color: Theme.of(context).primaryColor)
+                            ),
+                            floatingLabelStyle: TextStyle(color: Theme.of(context).primaryColor),
+                            hintText: 'Beri ulasan',
+                            labelText: 'Ulasan',
                           ),
-                        ],
-                      ),
+                          onChanged: (String value){
+                            ulasan = value;
+                          },
+                        ),
+                      ],
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        MaterialButton(
+                          textColor: Colors.white,
+                          color: Theme.of(context).primaryColor,
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+                          onPressed: () {
+                            Navigator.pop(context);
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                elevation: 10,
+                                backgroundColor: Theme.of(context).primaryColor,
+                                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                                duration: Duration(seconds: 1),
+                                content: Text('Terima Kasih telah memberi ulasan',style: TextStyle(
+                                  fontFamily: 'Noto',
+                                  color: Colors.white
+                                ),
+                                ),
+                              )
+                            );
+                          },
+                          child: Text('Kirim', style: TextStyle(fontSize: 14)),
+                        ),
+                         MaterialButton(
+                          child: Text('Lewati', style: TextStyle(color: Colors.black54)),
+                          onPressed: (){
+                            Navigator.pop(context);
+                          },
+                        ),
+                      ],
                     ),
                   ],
                 ),
